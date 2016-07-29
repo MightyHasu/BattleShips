@@ -58,15 +58,16 @@ public class Sea implements BattleField {
             List<String> shipCoordinates = ship.getCoordinates();
             for (String shipCoordinate : shipCoordinates) {
                 if (shipCoordinate.equals(fireCoordinates)) {
-                    System.out.printf("You got me!\n" +
+                    System.out.printf("You've got me!\n" +
                             "You hit %s!", ship.getClass().getName());
                     hit = true;
                     this.battleField[row][col] = "X";
+                    ship.shootAtShip(fireCoordinates);
                 }
             }
         }
         if (!hit) {
-            System.out.println("Miss!!!");
+            System.out.println(Messages.MISS);
             this.battleField[row][col] = "o";
         }
 
